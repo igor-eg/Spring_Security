@@ -25,8 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/persons/city/read/all", "/persons/person/read/all")
                 .permitAll()
                 .and()
-                .authorizeRequests().antMatchers("/persons/city/create", "/persons/person/create",
-                        "/persons/person/update-phone").hasAuthority("write")
+                .authorizeRequests().antMatchers("/persons/city/create" ).hasAuthority("write")
                 .and()
                 .authorizeRequests().antMatchers("/persons/city/read").hasAuthority("read")
                 .and()

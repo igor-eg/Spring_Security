@@ -41,7 +41,7 @@ public class CommandLineApp implements CommandLineRunner {
 
         var random = new Random();
 
-        // Создаем и сохраняем сущность человека, полученную на основе мужчин
+        // Создаем и сохраняем сущность человека
         IntStream.range(0, 10)
                 .forEach(i -> {
                     var persons  = Person.builder()

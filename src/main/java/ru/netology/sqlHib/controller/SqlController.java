@@ -30,6 +30,18 @@ public class SqlController {
         }
     }
 
+    // Запрос: localhost:8080/persons/city/read/all
+    @GetMapping("${endpoint-city-read-all}")
+    public List<City> readAllCityThanOrderByName() {
+        return sqlService.readAllCityThanOrderByName();
+    }
+
+    // Запрос: localhost:8080/persons/person/read/all
+    @GetMapping("${endpoint-person-read-all}")
+    public List<Person> readAllPersonThanOrderByAge() {
+        return sqlService.readAllPersonThanOrderByAge();
+    }
+
     // Запрос: localhost:8080/persons/city/read?name=...
     @GetMapping("${endpoint-city-read}")
     public City readByName(@RequestParam("name") String cityName) {
@@ -39,19 +51,4 @@ public class SqlController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "City not found in the DataBase!");
         }
     }
-
-    // Запрос: localhost:8080/persons/city/read/all
-    @GetMapping("${endpoint-city-read-all}")
-    public List<City> readAllCityThanOrderByName() {
-        return sqlService.readAllCityThanOrderByName();
-    }
-
-
-    // Запрос: localhost:8080/persons/person/read/all
-    @GetMapping("${endpoint-person-read-all}")
-    public List<Person> readAllPersonThanOrderByAge() {
-        return sqlService.readAllPersonThanOrderByAge();
-    }
-
-
 }

@@ -21,16 +21,12 @@ public class SqlService {
         this.personRepository = personRepository;
     }
 
-    public City readCityByName(String name) throws Exception {
-        return cityRepository.readByName(name);
-    }
+   // public City readCityByName(String name) throws Exception {
+   //     return cityRepository.readByName(name);
+  //  }
 
     public List<City> readAllCityThanOrderByName() {
         return cityRepository.findAll(Sort.by("name").ascending());
-    }
-
-    public City createCity(String name) throws Exception {
-        return cityRepository.createCity(name);
     }
 
     List<Person> findByCityName(String cityName) {
@@ -42,5 +38,20 @@ public class SqlService {
         return personRepository.findAll(Sort.by("personalData.age").ascending());
     }
 
+
+    public City readCityByName(String name) throws Exception {
+            City probablyCity = cityRepository.findCityByName(name);
+            if (probablyCity != null) {
+                return probablyCity;
+            } else throw new Exception();
+        }
+
+    // Создание и сохранение города в Базе данных
+    public City createCity(String name) throws Exception {
+        City probablyCity = cityRepository.findCityByName(name);
+        if (probablyCity == null) {
+            return cityRepository.save(City.builder().name(name).build());
+        } else throw new Exception();
+    }
 
 }
